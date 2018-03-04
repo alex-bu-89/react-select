@@ -4,22 +4,31 @@ import PropTypes from 'prop-types';
 class Select extends React.Component {
   constructor (props) {
 		super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+
     this.state = {
 			value: this.props.value || '',
 			options: this.props.options,
-			isOpen: false,
+			isOpen: true,
 		};
+  }
+
+  handleChange (e) {
+    e.stopPropagation();
+		e.preventDefault();
+    this.setState({ value: e.target.value });
   }
 
   render() {
     return (
       <section className='select-box'>
-        <input type="text" name="select-box" value={this.state.value} />
+        <input type="text" name="select-box" onChange={(e) => { this.handleChange(e) }} value={ this.state.value } />
         <ul className="select-box--options">
-          { this.state.showResults
+          { this.state.isOpen
             && (
               this.state.options.map((option, i) => {
-                return <li key={i}>{option}</li>
+                return <li key={i}>{ option }</li>
               })
             )
           }
