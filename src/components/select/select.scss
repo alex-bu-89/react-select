@@ -2,6 +2,7 @@
   border: 1px solid #ece3e4;
   display: inline-block;
   min-width: 150px;
+  position: relative;
 
   * {
     font: 400 16px Arial, Helvetica, 'sans-serif';
@@ -9,7 +10,16 @@
   }
 
   input[type="text"] {
-    padding: 10px 10px;
+    padding: 10px;
+    margin: 0;
     border: 0;
+  }
+
+  &--options {
+    position: absolute;
+    top: 100%;
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
   }
 }
