@@ -6,11 +6,12 @@ class Select extends React.Component {
 		super(props);
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleMouseDown = this.handleMouseDown.bind(this);
 
     this.state = {
 			value: this.props.value || '',
 			options: this.props.options,
-			isOpen: true,
+			isOpen: false,
       isSearchable: false
 		};
   }
@@ -21,24 +22,38 @@ class Select extends React.Component {
     this.setState({ value: e.target.value });
   }
 
+  handleMouseDown (e) {
+    e.stopPropagation();
+		e.preventDefault();
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+
+  renderDropdown() {
+    if (this.state.isOpen) {
+      return (
+        <ul className="select-box--options">
+          {
+            this.state.options.map((option, i) => {
+              return <li key={i}>{ option }</li>
+            })
+          }
+        </ul>
+      )
+    }
+  }
+
   render() {
     return (
       <section className='select-box'>
         <input
           type="text"
           name="select-box"
-          onChange={(e) => { this.handleChange(e) }}
+          onChange={(e) => { this.handleChange }}
+          onMouseDown={this.handleMouseDown}
           value={ this.state.value }
           readOnly={ !this.state.isSearchable } />
-        <ul className="select-box--options">
-          { this.state.isOpen
-            && (
-              this.state.options.map((option, i) => {
-                return <li key={i}>{ option }</li>
-              })
-            )
-          }
-        </ul>
+
+        { this.renderDropdown() }
       </section>
     );
   }
