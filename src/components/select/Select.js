@@ -12,7 +12,7 @@ class Select extends React.Component {
   render() {
     return (
       <section className='select-box'>
-        hello select
+        <input type="text" name="select-box" />
       </section>
     );
   }
