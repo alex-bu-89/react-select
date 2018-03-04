@@ -11,6 +11,7 @@ class Select extends React.Component {
 			value: this.props.value || '',
 			options: this.props.options,
 			isOpen: true,
+      isSearchable: false
 		};
   }
 
@@ -23,7 +24,12 @@ class Select extends React.Component {
   render() {
     return (
       <section className='select-box'>
-        <input type="text" name="select-box" onChange={(e) => { this.handleChange(e) }} value={ this.state.value } />
+        <input
+          type="text"
+          name="select-box"
+          onChange={(e) => { this.handleChange(e) }}
+          value={ this.state.value }
+          readOnly={ !this.state.isSearchable } />
         <ul className="select-box--options">
           { this.state.isOpen
             && (
