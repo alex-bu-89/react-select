@@ -47,9 +47,14 @@ class Select extends React.Component {
   render() {
     return (
       <section className='select-box'>
-        <input type="text" name="select-box" onChange={(e) => {
-            this.handleChange
-          }} onMouseDown={this.handleMouseDown} value={this.state.value} readOnly={!this.state.isSearchable}/> {this.renderDropdown()}
+        <input type="text"
+          name="select-box"
+          onChange={(e) => {this.handleChange}} 
+          onMouseDown={this.handleMouseDown}
+          value={this.state.value}
+          readOnly={!this.state.isSearchable}/>
+
+        {this.renderDropdown()}
       </section>
     );
   }
