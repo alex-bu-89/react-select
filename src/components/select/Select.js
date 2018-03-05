@@ -32,22 +32,26 @@ class Select extends React.Component {
 
   renderDropdown() {
     if (this.state.isOpen) {
-      return (<ul className="select-box--options">
-        {
-          this.state.options.map((option, i) => {
-            return <li key={i}>{option}</li>
-          })
-        }
-      </ul>)
+      return (
+        <ul className="select-box--options">
+          {
+            this.state.options.map((option, i) => {
+              return <li key={i}>{option}</li>
+            })
+          }
+        </ul>
+      )
     }
   }
 
   render() {
-    return (<section className='select-box'>
-      <input type="text" name="select-box" onChange={(e) => {
-          this.handleChange
-        }} onMouseDown={this.handleMouseDown} value={this.state.value} readOnly={!this.state.isSearchable}/> {this.renderDropdown()}
-    </section>);
+    return (
+      <section className='select-box'>
+        <input type="text" name="select-box" onChange={(e) => {
+            this.handleChange
+          }} onMouseDown={this.handleMouseDown} value={this.state.value} readOnly={!this.state.isSearchable}/> {this.renderDropdown()}
+      </section>
+    );
   }
 }
 
