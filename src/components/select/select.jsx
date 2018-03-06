@@ -12,21 +12,21 @@ class Select extends React.Component {
       value: this.props.value || '',
       options: this.props.options,
       isOpen: false,
-      isSearchable: false
+      isSearchable: false,
     };
   }
 
   handleChange(e) {
     e.stopPropagation();
     e.preventDefault();
-    this.setState({value: e.target.value});
+    this.setState({ value: e.target.value });
   }
 
   handleMouseDown(e) {
     e.stopPropagation();
     e.preventDefault();
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   }
 
@@ -35,24 +35,26 @@ class Select extends React.Component {
       return (
         <ul className="select-box--options">
           {
-            this.state.options.map((option, i) => {
-              return <li key={i}>{option}</li>
-            })
+            this.state.options.map(option => <li key={option.id}>{option}</li>)
           }
         </ul>
-      )
+      );
     }
+
+    return null;
   }
 
   render() {
     return (
-      <section className='select-box'>
-        <input type="text"
+      <section className="select-box">
+        <input
+          type="text"
           name="select-box"
-          onChange={(e) => {this.handleChange}} 
+          onChange={this.handleChange}
           onMouseDown={this.handleMouseDown}
           value={this.state.value}
-          readOnly={!this.state.isSearchable}/>
+          readOnly={!this.state.isSearchable}
+        />
 
         {this.renderDropdown()}
       </section>
@@ -62,7 +64,11 @@ class Select extends React.Component {
 
 Select.propTypes = {
   value: PropTypes.string,
-  options: PropTypes.array.isRequired
-}
+  options: PropTypes.arrayOf.isRequired,
+};
+
+Select.defaultProps = {
+  value: '',
+};
 
 export default Select;
