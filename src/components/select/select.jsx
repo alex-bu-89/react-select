@@ -9,7 +9,7 @@ class Select extends React.Component {
     this.handleMouseDown = this.handleMouseDown.bind(this);
 
     this.state = {
-      value: this.props.value || '',
+      value: this.props.value,
       options: this.props.options,
       isOpen: false,
       isSearchable: false,
