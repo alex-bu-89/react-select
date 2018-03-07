@@ -6,12 +6,13 @@ class Select extends React.Component {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.handleMouseDownSelect = this.handleMouseDownSelect.bind(this);
+    this.handleMouseDownItem = this.handleMouseDownItem.bind(this);
 
     this.state = {
       value: this.props.value,
       options: this.props.options,
-      isOpen: false,
+      isOpen: true,
       isSearchable: false,
     };
   }
@@ -22,7 +23,15 @@ class Select extends React.Component {
     this.setState({ value: e.target.value });
   }
 
-  handleMouseDown(e) {
+  handleMouseDownSelect(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  }
+
+  handleMouseDownItem(e) {
     e.stopPropagation();
     e.preventDefault();
     this.setState({
@@ -33,11 +42,12 @@ class Select extends React.Component {
   renderDropdown() {
     if (this.state.isOpen) {
       return (
-        <ul className="select-box--options">
+        <div className="select-box--options">
           {
-            this.state.options.map(option => <li key={option.id}>{option}</li>)
+            this.state.options.map((option, i) =>
+              <button onMouseDown={this.handleMouseDownItem} key={i}>{option}</button>)
           }
-        </ul>
+        </div>
       );
     }
 
@@ -51,7 +61,7 @@ class Select extends React.Component {
           type="text"
           name="select-box"
           onChange={this.handleChange}
-          onMouseDown={this.handleMouseDown}
+          onMouseDown={this.handleMouseDownSelect}
           value={this.state.value}
           readOnly={!this.state.isSearchable}
         />
@@ -64,7 +74,7 @@ class Select extends React.Component {
 
 Select.propTypes = {
   value: PropTypes.string,
-  options: PropTypes.arrayOf.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 Select.defaultProps = {
