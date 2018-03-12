@@ -12,8 +12,7 @@ class Select extends React.Component {
     this.state = {
       value: this.props.value,
       options: this.props.options,
-      isOpen: true,
-      isSearchable: false,
+      isOpen: false,
     };
   }
 
@@ -34,9 +33,7 @@ class Select extends React.Component {
   handleMouseDownItem(e) {
     e.stopPropagation();
     e.preventDefault();
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
+    console.log(e.target);
   }
 
   renderDropdown() {
@@ -63,7 +60,6 @@ class Select extends React.Component {
           onChange={this.handleChange}
           onMouseDown={this.handleMouseDownSelect}
           value={this.state.value}
-          readOnly={!this.state.isSearchable}
         />
 
         {this.renderDropdown()}
