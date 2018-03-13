@@ -22,13 +22,21 @@
     position: absolute;
     top: 100%;
     list-style-type: none;
-    padding: 10px;
     margin: 0;
     width: 100%;
     border: 1px solid #ece3e4;
 
-    li {
-      padding: 5px 0;
+    button {
+      padding: 10px;
+      background: none;
+      border: 0px;
+      display: block;
+      text-align: left;
+      width: 100%;
+
+      &:hover {
+        background: #f4f4f4;
+      }
     }
   }
 }
