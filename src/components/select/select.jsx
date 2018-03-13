@@ -17,22 +17,16 @@ class Select extends React.Component {
   }
 
   handleChange(e) {
-    e.stopPropagation();
-    e.preventDefault();
     this.setState({ value: e.target.value });
   }
 
   handleMouseDownSelect(e) {
-    e.stopPropagation();
-    e.preventDefault();
     this.setState({
       isOpen: !this.state.isOpen,
     });
   }
 
   handleMouseDownItem(e) {
-    e.stopPropagation();
-    e.preventDefault();
     console.log(e.target);
   }
 
