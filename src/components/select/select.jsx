@@ -8,12 +8,34 @@ class Select extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleMouseDownSelect = this.handleMouseDownSelect.bind(this);
     this.handleMouseDownItem = this.handleMouseDownItem.bind(this);
+    this.setWrapperRef = this.setWrapperRef.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
 
     this.state = {
       value: this.props.value,
       options: this.props.options,
       isOpen: false,
     };
+  }
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  setWrapperRef(node) {
+    this.wrapperRef = node;
+  }
+
+  handleClickOutside(e) {
+    if (this.wrapperRef && !this.wrapperRef.contains(e.target)) {
+      this.setState({
+        isOpen: false,
+      });
+    }
   }
 
   handleChange(e) {
@@ -28,6 +50,8 @@ class Select extends React.Component {
 
   handleMouseDownItem(e) {
     // @TODO dont trust user unput
+    e.preventDefault();
+    e.stopPropagation();
     this.setState({
       isOpen: false,
       value: e.target.innerText,
@@ -51,7 +75,7 @@ class Select extends React.Component {
 
   render() {
     return (
-      <section className="select-box">
+      <section className="select-box" ref={this.setWrapperRef}>
         <input
           type="text"
           name="select-box"
