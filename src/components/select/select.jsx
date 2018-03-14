@@ -20,14 +20,18 @@ class Select extends React.Component {
     this.setState({ value: e.target.value });
   }
 
-  handleMouseDownSelect(e) {
+  handleMouseDownSelect() {
     this.setState({
       isOpen: !this.state.isOpen,
     });
   }
 
   handleMouseDownItem(e) {
-    console.log(e.target);
+    // @TODO dont trust user unput
+    this.setState({
+      isOpen: false,
+      value: e.target.innerText,
+    });
   }
 
   renderDropdown() {
