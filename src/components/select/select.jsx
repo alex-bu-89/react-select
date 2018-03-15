@@ -49,7 +49,7 @@ class Select extends React.Component {
   }
 
   handleMouseDownItem(e) {
-    // @TODO dont trust user unput
+    // @TODO dont trust user input
     e.preventDefault();
     e.stopPropagation();
     this.setState({
