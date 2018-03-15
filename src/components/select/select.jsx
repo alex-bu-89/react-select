@@ -5,11 +5,15 @@ class Select extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleMouseDownSelect = this.handleMouseDownSelect.bind(this);
-    this.handleMouseDownItem = this.handleMouseDownItem.bind(this);
-    this.setWrapperRef = this.setWrapperRef.bind(this);
-    this.handleClickOutside = this.handleClickOutside.bind(this);
+    [
+      'handleChange',
+      'handleMouseDownSelect',
+      'handleMouseDownItem',
+      'setWrapperRef',
+      'handleClickOutside',
+    ].forEach((item) => {
+      this[item] = this[item].bind(this);
+    });
 
     this.state = {
       value: this.props.value,
