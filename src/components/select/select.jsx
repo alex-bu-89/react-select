@@ -11,6 +11,7 @@ class Select extends React.Component {
       'handleMouseDownItem',
       'setWrapperRef',
       'handleClickOutside',
+      'renderArrow',
     ].forEach((item) => {
       this[item] = this[item].bind(this);
     });
@@ -77,6 +78,12 @@ class Select extends React.Component {
     return null;
   }
 
+  renderArrow() {
+    return (
+      <span class="fi-icon-name" title="icon name" aria-hidden="true"></span>
+    );
+  }
+
   render() {
     return (
       <section className="select-box" ref={this.setWrapperRef}>
@@ -89,6 +96,7 @@ class Select extends React.Component {
         />
 
         {this.renderDropdown()}
+        {this.renderArrow()}
       </section>
     );
   }
