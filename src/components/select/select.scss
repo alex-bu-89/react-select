@@ -18,7 +18,7 @@
     width: 100%
   }
 
-  &--options {
+  &__options {
     position: absolute;
     top: 100%;
     list-style-type: none;
@@ -40,5 +40,12 @@
         background: #f4f4f4;
       }
     }
+  }
+
+  &__state-icon {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    margin-top: -8px;
   }
 }

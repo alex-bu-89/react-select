@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as FontAwesome from 'react-icons/lib/fa'
 
 class Select extends React.Component {
   constructor(props) {
@@ -66,7 +67,7 @@ class Select extends React.Component {
   renderDropdown() {
     if (this.state.isOpen) {
       return (
-        <div className="select-box--options">
+        <div className="select-box__options">
           {
             this.state.options.map((option, i) =>
               <button onMouseDown={this.handleMouseDownItem} key={i}>{option}</button>)
@@ -80,7 +81,12 @@ class Select extends React.Component {
 
   renderArrow() {
     return (
-      <span class="fi-icon-name" title="icon name" aria-hidden="true"></span>
+      <span className="select-box__state-icon">
+        { this.state.isOpen &&
+          <FontAwesome.FaCaretUp /> }
+        { !this.state.isOpen &&
+          <FontAwesome.FaCaretDown /> }
+      </span>
     );
   }
 
