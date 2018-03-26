@@ -2,6 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as FontAwesome from 'react-icons/lib/fa';
 
+/**
+ * @TODO:
+ * - highlight selected item in options list
+ * - filter on search
+ * - Searchable / Disabled
+ * - async option list?
+ * - multiselect (badges)
+ */
 class Select extends React.Component {
   constructor(props) {
     super(props);
