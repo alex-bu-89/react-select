@@ -37,7 +37,11 @@
       width: 100%;
 
       &:hover {
-        background: #f4f4f4;
+        background: #E2F3FE;
+      }
+
+      &.active {
+        background: #E2F3FE;
       }
     }
   }

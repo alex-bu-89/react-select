@@ -78,7 +78,7 @@ class Select extends React.Component {
         <div className="select-box__options">
           {
             this.state.options.map((option, i) =>
-              <button onMouseDown={this.handleMouseDownItem} key={i}>{option}</button>)
+              <button className={option === this.state.value ? 'active' : ''} onMouseDown={this.handleMouseDownItem} key={i}>{option}</button>)
           }
         </div>
       );
