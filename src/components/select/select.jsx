@@ -4,8 +4,9 @@ import * as FontAwesome from 'react-icons/lib/fa';
 
 /**
  * @TODO:
+ * - prod build
  * - filter on search
- * - Searchable / Disabled
+ * - searchable / disabled
  * - async option list?
  * - multiselect (badges)
  */
